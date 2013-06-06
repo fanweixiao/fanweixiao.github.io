@@ -1,7 +1,7 @@
 ---
-published: false
+published: true
 layout: post
-category: SurfaceRT
+category: Surface
 tags: 
   - surface
 ---
