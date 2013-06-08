@@ -29,9 +29,26 @@ ssh鏈接服務器，發現速度超級慢，來回嘗試了幾次，大概要4�
 
 ## 應該就是I/O的問題了
 
-看看I/O的情況，執行`vmstat 2`，每2s刷新一次結果，看到pre-last col（也就是倒數第2列的值）的值還是挺高的
+看看I/O的情況，執行`vmstat 2`，每2s刷新一次結果，看到pre-last col（也就是倒數第2列的值）的值還是挺高的。但是`vmstat`命令並不能夠完全說明問題，因爲他包含了所有foreground和background的進程的I/O消耗，如果前臺現在一些消耗I/O的東東，那它是不會block整個linux server的。但是這個命令至少能確定問題是出在這裏了。
 
-然後就找[誰消耗了%wait](http://stackoverflow.com/questions/666783/how-to-find-out-which-process-is-consuming-wait-cpu-i-e-i-o-blocked)：
+## 找到消耗I/O的進程
 
-`while true; do date; ps auxf | awk '{if($8=="D") print $0;}'; sleep 1; done`
+[參考這裏](http://www.chileoffshore.com/en/interesting-articles/126-linux-wait-io-problem)用`ps auxf`看`STAT`列，有下面幾個字段：
+	
+    D    Uninterruptible sleep (usually IO)
+    R    Running or runnable (on run queue)
+    S    Interruptible sleep (waiting for an event to complete)
+    T    Stopped, either by a job control signal or because it is being traced.
+    W    paging (not valid since the 2.6.xx kernel)
+    X    dead (should never be seen)
+    Z    Defunct ("zombie") process, terminated but not reaped by its parent.
+    
+if a process with its stat with "D", it means it is actually taking all CPU resource with no any possible interruption. This means your Linux Box will wait on IO and does not responding any other commands if such process is always there.
 
+然後用`while true; do date; ps auxf | awk '{if($8=="D") print $0;}'; sleep 1; done`把所有STAT列爲D的都打印出來，看看都有哪些process，像我，找到的是jbd2/dm-0-8（jbd is the "journaling block device". d-0-08 indicates a device mapped by device mapper）。
+
+那麼直接就盯着它看吧：`while true; do ps auxf | grep "jbd2\/dm-0-8" |grep "D"; sleep 1; done`
+
+## 磁盤健康狀況
+
+`hdparm -Tt /dev/sda`看看，這裏我還是不透漏了當時的結果了...數太低了，估計是虛擬機背後挂的盤I/O不足了，要不就是盤要快報廢了，趕緊跑備份。。。
