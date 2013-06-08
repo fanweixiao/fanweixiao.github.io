@@ -23,7 +23,7 @@ ssh鏈接服務器，發現速度超級慢，來回嘗試了幾次，大概要4�
 
 ## bug repro
 
-雖然注意到了`%wait`的值有些高，但是我並沒有太多CentOS上的經驗，此前也沒有太多的關注過這個值，加上服務器本身還是泰Virtual Machine，所以慣性思路還是從服務上去找的，來回的關閉掉業務，看top，然後再開啓，看着top，幸好有[tmux]()，vertical排列兩個pane，左側是top，右側操作，方便了很多。
+雖然注意到了`%wait`的值有些高，但是我並沒有太多CentOS上的經驗，此前也沒有太多的關注過這個值，加上服務器本身還是泰Virtual Machine，所以慣性思路還是從服務上去找的，來回的關閉掉業務，看top，然後再開啓，看着top，幸好有[tmux](http://tmux.sourceforge.net/)，vertical排列兩個pane，左側是top，右側操作，方便了很多。
 
 反覆幾次之後發現，停了所有業務進程後，`%wait`就在0%~3%之間，開啓後就平均在70%以上。抄起Google，[看看它是什麼意思](http://blog.scoutapp.com/articles/2011/02/10/understanding-disk-i-o-when-should-you-be-worried)。
 
