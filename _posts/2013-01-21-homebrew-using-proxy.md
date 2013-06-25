@@ -23,7 +23,7 @@ Github.com被ban後，homebrew的安裝也深受影響，這裏提供一個簡�
 
 	ruby -e "$(curl -fsSkL https://raw.github.com/mxcl/homebrew/go)"
 	
-注意其中的_**https://**_
+注意其中的**https://**
 
 當然您也可以[使用Homebrew wiki裏提到的高級安裝辦法](https://github.com/mxcl/homebrew/wiki/Installation):
 
