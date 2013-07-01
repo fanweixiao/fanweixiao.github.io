@@ -22,7 +22,6 @@ tags:
 
 但是如果不想替換（像我），那麼就只改動alias腳本就可以了：
 
-```
 	unamestr=`uname`
     if [[ "$unamestr" == "Darwin" ]]; then
       alias ll='gls -aslhF --color'
@@ -33,6 +32,5 @@ tags:
       alias la='ls -A --color' 
      alias l='ls -CF --color' 
     fi
-```
 
 最後，[要注意Mac下的.bash_profile哦](http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html)
