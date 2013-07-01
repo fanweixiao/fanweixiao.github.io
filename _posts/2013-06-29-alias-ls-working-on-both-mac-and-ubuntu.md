@@ -30,7 +30,7 @@ tags:
     else
       alias ll='ls -aslhF --color'
       alias la='ls -A --color' 
-     alias l='ls -CF --color' 
+      alias l='ls -CF --color' 
     fi
 
 最後，[要注意Mac下的.bash_profile哦](http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html)
