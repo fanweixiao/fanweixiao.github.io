@@ -19,4 +19,4 @@ tags : [linux, centos, ssh]
 - uncomment： `PrintMotd yes`
 - add msg to： `/etc/motd`
 
-記得最後__service sshd reload__重啓sshd服務套用更新
+記得最後`service sshd reload`重啓sshd服務套用更新
