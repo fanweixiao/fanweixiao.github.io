@@ -30,6 +30,15 @@ Github.com被ban後，homebrew的安裝也深受影響，這裏提供一個簡�
 	mkdir homebrew && curl -L https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C homebrew
 
 ## homebrew的formular安裝遇到網絡問題
+
+### Socks5方式
+
+如果是卡在`curl`上的話，可以通過設置`~/.curlrc`文件，來解決這個問題：
+
+	socks5 = "localhost:7080"
+
+
+### Socks5轉換成HTTP代理方式
 homebrew[支持http_proxy這個env](https://github.com/mxcl/homebrew/wiki/Tips-N%27-Tricks)，如果您有http proxy請直接從**第4步**開始，如果只有socks proxy，操作如下：
 
 假設您的socks5 proxy監聽端口是**127.0.0.1:7070**，然後想創建一個**127.0.0.1:8118**的http proxy：
@@ -52,3 +61,9 @@ homebrew[支持http_proxy這個env](https://github.com/mxcl/homebrew/wiki/Tips-N
 + tmux
 + polipo
 + meld
++ ssh-copy-id
++ hub
++ watch
++ figlet
++ htop-osx
++ xaric
