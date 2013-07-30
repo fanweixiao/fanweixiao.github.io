@@ -9,7 +9,7 @@ tags:
 
 ## 服務器時間不準確的處理步驟
 
-1. 先檢查是否有`ntpd`服務和`ntpdate`，如果米有，就`yum -y install ntpd ntpdate`
+1. 先檢查是否有`ntpd`服務和`ntpdate`，如果米有，就`yum -y install ntp ntpdate`
 2. 設置成正確的`timezone`，比如我的服務器`ln -s /usr/share/zoneinfo/Asia/Taipei /etc/localtime`
 3. `ntpdate ntp.tuna.tsinghua.edu.cn`矯正時間
 3. 運行`date`檢查一下時間是否正確
