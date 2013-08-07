@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 category: osx
 tags: 
@@ -12,4 +12,3 @@ tags:
 2. Terminal and iTerm use `login -pfq $USER /bin/bash -l` or `login -pfq $USER  /bin/zsh -l` instead of default `login shell` option
 3. quit and restart
 3. ENJOY!
-
