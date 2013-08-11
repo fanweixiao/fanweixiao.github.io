@@ -16,9 +16,9 @@ tags :
 2. `touch ~/Library/KeyBindings/DefaultKeyBinding.dict`
 3. 編輯該文件，內容如下：
 {% highlight json %}
-    {
-      "~b" = moveWordBackward:;
-      "~f" = moveWordForward:;
-    }
+{
+  "~b" = moveWordBackward:;
+  "~f" = moveWordForward:;
+}
 {% endhighlight %}
 當然，您也可以繼續mapping像`m-v`、`c-v`等快捷鍵的。
