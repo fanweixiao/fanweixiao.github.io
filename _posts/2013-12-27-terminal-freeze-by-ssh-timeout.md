@@ -1,10 +1,10 @@
 ---
-published: false
+published: true
 layout: post
 category: linux
 tags: 
   - ssh
-  - termina
+  - terminal
 ---
 
 ## ssh超时导致terminal不响应
